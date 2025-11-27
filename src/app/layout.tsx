@@ -16,6 +16,9 @@ export const metadata: Metadata = {
   title: "QR Masam | Dijital Menü Altyapısı",
   description:
     "Kafe ve restoranlar için koyu temalı, cam efektli dijital menü ve QR altyapısı. Tek seferlik kurulum ve aylık bakım hizmeti.",
+  icons: {
+    icon: "/qrlogo.png",
+  },
 };
 
 export default function RootLayout({
