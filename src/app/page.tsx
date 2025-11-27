@@ -76,28 +76,20 @@ export default function Home() {
       <div className="relative mx-auto max-w-6xl px-4 pb-20 pt-6 sm:px-6 lg:px-10">
         <Navbar />
 
-        <section className="relative isolate mt-12 grid min-h-[620px] overflow-hidden gap-10 rounded-3xl bg-slate-900/30 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.9fr)] lg:items-center">
-          <Image
-            src="/bg-qrmasam-restaurant.jpg"
-            alt=""
-            fill
-            className="absolute inset-0 -z-20 object-cover"
-            priority
-          />
-          <div className="absolute inset-0 -z-10 bg-slate-950/65" />
-          <div className="absolute inset-y-0 left-0 -z-10 w-[60%] bg-gradient-to-r from-slate-950 via-slate-950/85 to-transparent" />
-
-          <div className="space-y-6 px-4 py-8 sm:px-6 lg:px-10">
-            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-500/20 px-3 py-1 text-xs font-medium text-white">
+        {/* HERO – sade beyaz zemin + sağda görsel kart */}
+        <section className="mt-12 grid gap-10 rounded-3xl bg-white/90 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.9fr)] lg:items-center">
+          {/* Sol panel */}
+          <div className="space-y-6 px-2 sm:px-4 lg:px-6">
+            <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
               Yeni nesil dijital menü altyapısı
             </div>
 
-            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-white sm:text-5xl">
+            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-tight text-slate-900 sm:text-5xl">
               Kafenizin menüsü
-              <span className="block text-blue-200">masadan çıkıp cebe girsin.</span>
+              <span className="block text-blue-600">masadan çıkıp cebe girsin.</span>
             </h1>
 
-            <p className="max-w-xl text-base text-slate-100">
+            <p className="max-w-xl text-base text-slate-600">
               QR Masam, kafe ve restoranlar için premium dijital menü ve QR
               altyapısı sunar. Menüleriniz işletmenize özel hazırlanır ve
               örnekler yalnızca teklif aşamasında paylaşılır; sitede genel demo
@@ -114,52 +106,55 @@ export default function Home() {
               </a>
             </div>
 
-            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-200 sm:text-sm">
-              <span>• Tek seferlik kurulum: 5.999 TL</span>
-              <span>• Aylık hizmet: 699 TL</span>
+            <div className="flex flex-wrap items-center gap-4 text-xs text-slate-500 sm:text-sm">
               <span>• Öncelikli WhatsApp desteği</span>
               <span>• Teslim: 5 iş günü içinde kurulum</span>
             </div>
           </div>
 
-          <div className="relative px-4 pb-8 sm:px-6 lg:px-10">
-            <div className="absolute -left-12 top-6 h-40 w-40 rounded-full bg-blue-200/30 blur-3xl opacity-30" />
-            <div className="absolute -right-10 bottom-4 h-32 w-32 rounded-full bg-orange-200/30 blur-3xl opacity-30" />
+          {/* Sağ panel: demo bilgi kartı */}
+          <div className="px-2 pb-4 sm:px-4 lg:px-6">
+            <div className="relative overflow-hidden rounded-3xl border border-slate-200 bg-white/95 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.16)]">
+              <div className="pointer-events-none absolute -left-16 top-0 h-40 w-40 rounded-full bg-blue-200/40 blur-3xl opacity-50" />
+              <div className="pointer-events-none absolute -right-10 bottom-0 h-32 w-32 rounded-full bg-orange-200/40 blur-3xl opacity-50" />
 
-            <div className="glass-card relative overflow-hidden rounded-3xl p-6 text-slate-100">
               <div className="relative space-y-4">
-                <div className="flex items-center gap-2 text-xs text-blue-100">
-                  <span className="h-2 w-2 rounded-full bg-blue-200/80" />
-                  <span className="font-semibold">Demo nasıl hazırlanıyor?</span>
+                <div className="flex items-center gap-2 text-xs font-semibold text-blue-700">
+                  <span className="h-2 w-2 rounded-full bg-blue-500" />
+                  <span>Demo nasıl hazırlanıyor?</span>
                 </div>
-                <ol className="space-y-3 text-sm text-slate-100">
+
+                <ol className="space-y-3 text-sm text-slate-700">
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-[11px] font-semibold text-blue-100">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/40 bg-blue-50 text-[11px] font-semibold text-blue-700">
                       1
                     </span>
-                    <span>Menünüzü iletin.</span>
+                    <span>Menünüzü WhatsApp veya e-posta ile bize iletin.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-[11px] font-semibold text-blue-100">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/40 bg-blue-50 text-[11px] font-semibold text-blue-700">
                       2
                     </span>
-                    <span>Size özel tasarım hazırlayalım.</span>
+                    <span>Size özel tasarım ve renklerinizle dijital menünüzü hazırlayalım.</span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/30 bg-blue-500/10 text-[11px] font-semibold text-blue-100">
+                    <span className="mt-0.5 inline-flex h-6 w-6 items-center justify-center rounded-full border border-blue-500/40 bg-blue-50 text-[11px] font-semibold text-blue-700">
                       3
                     </span>
-                    <span>Demo örneğini WhatsApp/e-posta ile gönderelim.</span>
+                    <span>Demo örneğini onayınıza sunalım, ardından QR kodlarınızı teslim edelim.</span>
                   </li>
                 </ol>
-                <p className="text-xs text-slate-200">
-                  Örnek menüler sadece teklif aşamasında paylaşılır.
+
+                <p className="text-xs text-slate-500">
+                  Örnek menüler sadece teklif aşamasında, işletmelere özel olarak paylaşılır;
+                  sitede herkese açık demo gösterilmez.
                 </p>
               </div>
             </div>
           </div>
         </section>
 
+        {/* Küçük istatistik kartları */}
         <section className="mt-12 grid gap-4 md:grid-cols-3">
           <div className="glass-card flex items-center gap-3 rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-lg">📈</div>
@@ -192,6 +187,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Özel demo kartı */}
         <section className="mt-16 flex justify-center">
           <div className="glass-card relative w-full max-w-3xl overflow-hidden rounded-3xl p-8 text-center text-slate-700">
             <div className="absolute -left-14 top-2 h-28 w-28 rounded-full bg-blue-200/50 blur-3xl opacity-30" />
@@ -227,8 +223,10 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Görsel galeri */}
         <GallerySection />
 
+        {/* Özellikler */}
         <section className="mt-14 space-y-6" id="features">
           <div className="relative max-w-3xl space-y-2">
             <div className="absolute -left-10 -top-10 h-20 w-20 rounded-full bg-blue-200/40 blur-3xl opacity-30" />
@@ -256,6 +254,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Süreç */}
         <section className="mt-16 space-y-4" id="how-it-works">
           <div className="flex items-center gap-3">
             <div className="h-px flex-1 bg-gradient-to-r from-blue-500/30 via-blue-400/20 to-transparent" />
@@ -291,6 +290,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Fiyatlandırma */}
         <section className="mt-16" id="pricing">
           <div className="flex items-baseline justify-between gap-4">
             <div>
@@ -354,13 +354,13 @@ export default function Home() {
               <p className="mt-1 text-xs text-slate-500">
                 Minimum 3 ay taahhüt ile çalışıyoruz.
               </p>
-                <ul className="mt-5 space-y-2 text-sm text-slate-600">
-                  <li>• Menü değişikliklerinde destek</li>
-                  <li>• Teknik bakım</li>
-                  <li>• QR yenileme</li>
-                  <li>• Yapay zeka destekli öneri optimizasyonu</li>
-                  <li>• Öncelikli WhatsApp desteği</li>
-                </ul>
+              <ul className="mt-5 space-y-2 text-sm text-slate-600">
+                <li>• Menü değişikliklerinde destek</li>
+                <li>• Teknik bakım</li>
+                <li>• QR yenileme</li>
+                <li>• Yapay zeka destekli öneri optimizasyonu</li>
+                <li>• Öncelikli WhatsApp desteği</li>
+              </ul>
               <a href="#contact" className="btn-primary mt-6">
                 Teklif al
               </a>
@@ -368,6 +368,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SSS */}
         <section className="mt-16" id="faq">
           <div className="flex items-center justify-between">
             <h2 className="text-2xl font-semibold text-slate-900">
@@ -391,6 +392,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* İletişim */}
         <section className="mt-16" id="contact">
           <div className="relative grid gap-6 overflow-hidden rounded-3xl border border-blue-500/15 bg-white/90 p-6 text-slate-700 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl md:grid-cols-[1.1fr_minmax(0,0.9fr)] md:items-center">
             <div className="absolute -left-10 top-4 h-24 w-24 rounded-full bg-blue-200/50 blur-3xl opacity-30" />
@@ -416,6 +418,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* Footer */}
         <footer className="mt-12 flex flex-wrap items-center justify-between gap-2 border-t border-slate-200 pt-4 text-xs text-slate-500">
           <span>© {year} QR Masam</span>
           <span>Bandırma · Dijital Menü Altyapısı</span>
@@ -470,12 +473,12 @@ function GallerySection() {
 
   return (
     <section className="mt-16" ref={ref}>
-      <h2 className="text-center text-2xl font-semibold text-slate-100">
+      <h2 className="text-center text-2xl font-semibold text-slate-900">
         QR Masam Deneyimi
       </h2>
       <div className="mt-6 grid gap-6 md:grid-cols-2">
         <div
-          className={`glass-card overflow-hidden rounded-3xl p-3 transition duration-700 ${
+          className={`overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl transition duration-700 ${
             visible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
           }`}
         >
@@ -488,7 +491,7 @@ function GallerySection() {
           />
         </div>
         <div
-          className={`glass-card overflow-hidden rounded-3xl p-3 transition duration-700 ${
+          className={`overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl transition duration-700 ${
             visible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
           }`}
         >
