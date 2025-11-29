@@ -18,6 +18,10 @@
   --font-mono: var(--font-geist-mono);
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   min-height: 100vh;
   @apply text-slate-900;
@@ -41,4 +45,34 @@ body {
 
 .btn-secondary {
   @apply inline-flex items-center justify-center rounded-2xl border border-orange-400/60 px-5 py-2.5 text-sm font-semibold text-orange-600 transition hover:bg-orange-50;
+}
+
+.reveal-card {
+  opacity: 0;
+  transform: translateY(26px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-card.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@keyframes drop-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-32px) scale(0.98);
+  }
+  65% {
+    opacity: 1;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-drop-in {
+  animation: drop-in 0.9s cubic-bezier(0.2, 0.8, 0.3, 1) forwards;
 }

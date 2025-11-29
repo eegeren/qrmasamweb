@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useEffect, useRef, useState } from "react";
+import { ReactNode, useEffect, useRef, useState } from "react";
 
 const features = [
   {
@@ -68,6 +68,24 @@ const faqs = [
   },
 ];
 
+const galleryItems = [
+  {
+    src: "/woman-qr.png",
+    alt: "QR Masam kullanan kadın",
+    caption: "Masadan QR’la menüye hızlı erişim",
+  },
+  {
+    src: "/man-qr.png",
+    alt: "QR Masam kullanan erkek",
+    caption: "Koyu temalı dijital menü deneyimi",
+  },
+  {
+    src: "/aidestekligorselqr.png",
+    alt: "AI destekli QR menü illüstrasyonu",
+    caption: "AI destekli QR menü konsepti",
+  },
+];
+
 export default function Home() {
   const year = new Date().getFullYear();
 
@@ -77,7 +95,7 @@ export default function Home() {
         <Navbar />
 
         {/* HERO – sade beyaz zemin + sağda görsel kart */}
-        <section className="mt-12 grid gap-10 rounded-3xl bg-white/90 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.9fr)] lg:items-center">
+        <section className="mt-12 grid gap-10 rounded-3xl bg-gradient-to-br from-white/95 via-slate-50/90 to-blue-50/70 p-6 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.9fr)] lg:items-center">
           {/* Sol panel */}
           <div className="space-y-6 px-2 sm:px-4 lg:px-6">
             <div className="inline-flex items-center gap-2 rounded-full border border-blue-500/20 bg-blue-50 px-3 py-1 text-xs font-medium text-blue-700">
@@ -156,7 +174,7 @@ export default function Home() {
 
         {/* Küçük istatistik kartları */}
         <section className="mt-12 grid gap-4 md:grid-cols-3">
-          <div className="glass-card flex items-center gap-3 rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+          <RevealOnScroll className="glass-card flex items-center gap-3 rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-lg">📈</div>
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-500">
@@ -164,8 +182,8 @@ export default function Home() {
               </p>
               <p className="text-lg font-semibold text-slate-900">120+</p>
             </div>
-          </div>
-          <div className="glass-card flex items-center gap-3 rounded-2xl border border-orange-400/40 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+          </RevealOnScroll>
+          <RevealOnScroll delay={80} className="glass-card flex items-center gap-3 rounded-2xl border border-orange-400/40 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-orange-100 text-lg">⚡️</div>
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-500">
@@ -173,8 +191,8 @@ export default function Home() {
               </p>
               <p className="text-lg font-semibold text-slate-900">5 iş günü</p>
             </div>
-          </div>
-          <div className="glass-card flex items-center gap-3 rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
+          </RevealOnScroll>
+          <RevealOnScroll delay={140} className="glass-card flex items-center gap-3 rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_14px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl">
             <div className="flex h-10 w-10 items-center justify-center rounded-full bg-blue-500/10 text-lg">🤖</div>
             <div>
               <p className="text-xs uppercase tracking-wide text-slate-500">
@@ -184,7 +202,7 @@ export default function Home() {
                 Ruh haline göre
               </p>
             </div>
-          </div>
+          </RevealOnScroll>
         </section>
 
         {/* Özel demo kartı */}
@@ -239,9 +257,10 @@ export default function Home() {
             </p>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
-            {features.map((item) => (
-              <div
+            {features.map((item, index) => (
+              <RevealOnScroll
                 key={item.title}
+                delay={index * 80}
                 className="relative overflow-hidden rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl"
               >
                 <div className="absolute right-4 top-4 h-10 w-10 rounded-full bg-blue-200/50 blur-3xl opacity-30" />
@@ -249,7 +268,7 @@ export default function Home() {
                   {item.title}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">{item.desc}</p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </section>
@@ -272,8 +291,9 @@ export default function Home() {
           </p>
           <div className="grid gap-4 md:grid-cols-2">
             {steps.map((step, index) => (
-              <div
+              <RevealOnScroll
                 key={step.title}
+                delay={index * 90}
                 className="rounded-2xl border border-blue-500/15 bg-white/80 p-4 text-slate-700 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl"
               >
                 <div className="mb-2 inline-flex items-center gap-2 text-blue-700">
@@ -285,7 +305,7 @@ export default function Home() {
                   </h3>
                 </div>
                 <p className="text-sm text-slate-600">{step.desc}</p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </section>
@@ -304,7 +324,7 @@ export default function Home() {
             </div>
           </div>
           <div className="mt-8 grid gap-4 lg:grid-cols-2">
-            <div className="relative flex flex-col overflow-hidden rounded-3xl border border-blue-500/15 bg-white/85 p-6 text-slate-700 shadow-[0_20px_60px_rgba(15,23,42,0.15)] backdrop-blur-xl">
+            <RevealOnScroll className="relative flex flex-col overflow-hidden rounded-3xl border border-blue-500/15 bg-white/85 p-6 text-slate-700 shadow-[0_20px_60px_rgba(15,23,42,0.15)] backdrop-blur-xl">
               <div className="absolute -right-6 -top-10 h-28 w-28 rounded-full bg-blue-200/50 blur-3xl opacity-30" />
               <div>
                 <h3 className="text-sm font-semibold text-blue-700">
@@ -330,9 +350,9 @@ export default function Home() {
                   <li>• Yönetici eğitimi</li>
                 </ul>
               </div>
-            </div>
+            </RevealOnScroll>
 
-            <div className="relative flex flex-col overflow-hidden rounded-3xl border border-orange-400/50 bg-white/90 p-6 text-slate-700 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl">
+            <RevealOnScroll delay={120} className="relative flex flex-col overflow-hidden rounded-3xl border border-orange-400/50 bg-white/90 p-6 text-slate-700 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl">
               <div className="absolute left-0 top-0 h-1 w-full bg-gradient-to-r from-orange-400/70 via-orange-300/40 to-transparent" />
               <div className="flex items-center justify-between">
                 <div>
@@ -364,7 +384,7 @@ export default function Home() {
               <a href="#contact" className="btn-primary mt-6">
                 Teklif al
               </a>
-            </div>
+            </RevealOnScroll>
           </div>
         </section>
 
@@ -377,9 +397,10 @@ export default function Home() {
             <div className="h-px flex-1 bg-gradient-to-l from-blue-500/20 via-blue-400/15 to-transparent" />
           </div>
           <div className="mt-6 grid gap-4 md:grid-cols-2">
-            {faqs.map((item) => (
-              <div
+            {faqs.map((item, index) => (
+              <RevealOnScroll
                 key={item.q}
+                delay={index * 70}
                 className="relative overflow-hidden rounded-2xl border border-blue-500/15 bg-white/85 p-4 text-slate-700 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl"
               >
                 <div className="absolute -right-6 -top-8 h-16 w-16 rounded-full bg-blue-200/40 blur-3xl opacity-30" />
@@ -387,14 +408,14 @@ export default function Home() {
                   {item.q}
                 </h3>
                 <p className="mt-2 text-sm text-slate-600">{item.a}</p>
-              </div>
+              </RevealOnScroll>
             ))}
           </div>
         </section>
 
         {/* İletişim */}
         <section className="mt-16" id="contact">
-          <div className="relative grid gap-6 overflow-hidden rounded-3xl border border-blue-500/15 bg-white/90 p-6 text-slate-700 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl md:grid-cols-[1.1fr_minmax(0,0.9fr)] md:items-center">
+          <RevealOnScroll className="relative grid gap-6 overflow-hidden rounded-3xl border border-blue-500/15 bg-white/90 p-6 text-slate-700 shadow-[0_24px_70px_rgba(15,23,42,0.16)] backdrop-blur-xl md:grid-cols-[1.1fr_minmax(0,0.9fr)] md:items-center">
             <div className="absolute -left-10 top-4 h-24 w-24 rounded-full bg-blue-200/50 blur-3xl opacity-30" />
             <div className="absolute right-0 bottom-0 h-20 w-20 rounded-full bg-orange-200/50 blur-3xl opacity-30" />
             <div>
@@ -415,7 +436,7 @@ export default function Home() {
                 Telefon: 0 545 154 20 03 · E-posta: info@qrmasam.com
               </p>
             </div>
-          </div>
+          </RevealOnScroll>
         </section>
 
         {/* Footer */}
@@ -456,6 +477,43 @@ function Navbar() {
   );
 }
 
+type RevealProps = {
+  children: ReactNode;
+  delay?: number;
+  className?: string;
+};
+
+function RevealOnScroll({ children, delay = 0, className = "" }: RevealProps) {
+  const ref = useRef<HTMLDivElement | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <div
+      ref={ref}
+      style={{ transitionDelay: `${delay}ms` }}
+      className={`reveal-card ${isVisible ? "is-visible" : ""} ${className}`}
+    >
+      {children}
+    </div>
+  );
+}
+
 function GallerySection() {
   const ref = useRef<HTMLDivElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -476,33 +534,28 @@ function GallerySection() {
       <h2 className="text-center text-2xl font-semibold text-slate-900">
         QR Masam Deneyimi
       </h2>
-      <div className="mt-6 grid gap-6 md:grid-cols-2">
-        <div
-          className={`overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl transition duration-700 ${
-            visible ? "translate-x-0 opacity-100" : "-translate-x-8 opacity-0"
-          }`}
-        >
-          <Image
-            src="/woman-qr.png"
-            alt="QR Masam kullanan kadın"
-            width={800}
-            height={800}
-            className="h-full w-full rounded-2xl object-cover"
-          />
-        </div>
-        <div
-          className={`overflow-hidden rounded-3xl border border-slate-200 bg-white/90 p-3 shadow-[0_16px_40px_rgba(15,23,42,0.12)] backdrop-blur-xl transition duration-700 ${
-            visible ? "translate-x-0 opacity-100" : "translate-x-8 opacity-0"
-          }`}
-        >
-          <Image
-            src="/man-qr.png"
-            alt="QR Masam kullanan erkek"
-            width={800}
-            height={800}
-            className="h-full w-full rounded-2xl object-cover"
-          />
-        </div>
+      <div className={`mt-6 grid gap-4 md:grid-cols-3 ${visible ? "opacity-100" : "opacity-0 translate-y-3"} transition`}>
+        {galleryItems.map((item, idx) => (
+          <div
+            key={item.src}
+            className="overflow-hidden rounded-2xl bg-gradient-to-b from-white/85 to-slate-50/90 p-2 shadow-[0_10px_26px_rgba(15,23,42,0.1)]"
+          >
+            <div className="relative aspect-[3/4] w-full overflow-hidden rounded-2xl border border-slate-200/80">
+              <Image
+                src={item.src}
+                alt={item.alt}
+                fill
+                className="object-cover"
+                sizes="(min-width: 1024px) 320px, (min-width: 768px) 45vw, 90vw"
+                loading={idx === 0 ? undefined : "lazy"}
+                priority={idx === 0}
+              />
+            </div>
+            <p className="mt-3 text-center text-xs font-semibold text-slate-700">
+              {item.caption}
+            </p>
+          </div>
+        ))}
       </div>
     </section>
   );
